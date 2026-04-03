@@ -19,8 +19,8 @@ defer cancel()
 
 sem := NewWeighted(n, tenants)
 
-go sem.Acquire(ctx, "tenantID_1", 150) 
+sem.Acquire(ctx, "tenantID_1", 150) 
 go sem.Acquire(ctx, "tenantID_2", 350)
-go sem.Acquire(ctx, "tenantID_1", 100)
+sem.Release("tenantID_1", 100)
 ...
 ```
